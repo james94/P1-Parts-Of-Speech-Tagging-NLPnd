@@ -22,19 +22,19 @@ For simplicity, I will describe the Hidden Markov Model Architecture using 3 par
 
 To teach the computer how to tag parts of speech within a sentence, first we do some data processing on the text corpora defined in **[brown-universal.txt](brown-universal.txt)** to create a tag emission probabilities discrete distribution for each Hidden Markov Model state as shown in **Figure 1**. Next we calculate the transition probabilities from start state to each tag, between every pair of tags and from each tag to the end state as shown in **Figure 1**. 
 
-![hidden-markov-model-10](docs/images/hidden-markov-model-10.jpg)
+![hidden-markov-model-10](docs/images/hidden-markov-models-10.jpg)
 
 **Figure 1**: Hidden Markov Model Emission and Transition Probabilities [1]
 
 To calculate the tag emission probabilities, we divide each word count for a particular tag by that particular tag count. For example, the word "Mary" appeared 4 times as a "NOUN", the "NOUN" count for the all the words is 9 by adding all the word counts in the numerators. So, the emission probability for the "NOUN" to be the word "Mary" is 4/9 as shown in **Figure 2**. Once this procedure is done for all emission probabilities, they are passed into the discrete distribution for each Hidden Markov Model state. Each state has a tag and emission probabilities to words as shown in **Figure 2**.
 
-![hidden-markov-model-5](docs/images/hidden-markov-model-5.jpg)
+![hidden-markov-model-5](docs/images/hidden-markov-models-5.jpg)
 
 **Figure 2**: Hidden Markov Model Emission Probabilities [1]
 
 To calculate the transition probabilities from the start state to each tag, we divide each starting tag count by the sum of all starting tag counts. As we do this procedure for each transition probability, each probability is added as a model transition for the start state to each tag **Figure 3**. Likewise, to calculate the transition probabilities from each tag to the end state, we divide each ending tag count by the sum of all ending tag counts. Then each probability from each tag to the end state is added to the model transition **Figure 3**. To compute the transition probabilities between every pair of tags, we divide each bigram count by the unigram tag count. Then each probability between every pair of tags is added to the model transition as shown in **Figure 3**. A bigram is a pair of tags. A unigram is the tag.
 
-![hidden-markov-model-8](docs/images/hidden-markov-model-8.jpg)
+![hidden-markov-model-8](docs/images/hidden-markov-models-8.jpg)
 
 **Figure 3**: Hidden Markov Model Transition Probabilities [1]
 
